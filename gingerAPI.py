@@ -21,14 +21,10 @@ def checkGrammar(text):
 
     else:
         for line in result['LightGingerTheTextResult']:
-            from_index = line['From']
-            #print(from_index)
-            to_index = line['To']
-            #print(to_index)
-            replacement = line['Suggestions'][0]['Text']
-            #print(replacement)
-            newText+=text[startIndex:from_index]+replacement
-            #print(newText)
+            from_index = line['From'] #start index of mistake
+            to_index = line['To'] #end index of mistake
+            replacement = line['Suggestions'][0]['Text'] #replacement provided for mistake
+            newText+=text[startIndex:from_index]+replacement 
             startIndex = to_index + 1
         
         newText+=text[startIndex:]

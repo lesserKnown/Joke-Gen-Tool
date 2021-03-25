@@ -21,7 +21,12 @@ def scrap(handle):
         fieldnames = ['tweet']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames) 
         for tweet in data:
-            if tweet['lang'] == 'en' and tweet['media'] == None and tweet['outlinks'] == [] and tweet['mentionedUsers'] == None and tweet['quotedTweet'] == None and tweet['likeCount'] > 100:
+            if (tweet['lang'] == 'en' 
+            and tweet['media'] == None 
+            and tweet['outlinks'] == [] 
+            and tweet['mentionedUsers'] == None 
+            and tweet['quotedTweet'] == None 
+            and tweet['likeCount'] > 100):
                 s = json.dumps(tweet['content'], ensure_ascii=False)
                 s = html.unescape('{}'.format(s))
                 s = unidecode(u'{}'.format(s))
